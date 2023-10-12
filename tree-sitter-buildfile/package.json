@@ -1,0 +1,25 @@
+{
+  "name": "tree-sitter-buildfile",
+  "module": "index.js",
+  "type": "commonjs",
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "nan": "^2.18.0",
+    "tree-sitter-cli": "^0.20.8"
+  },
+  "main": "bindings/node",
+  "tree-sitter": [
+    {
+      "scope": "source.buildfile",
+      "file-types": [
+        "buildfile"
+      ],
+      "injection-regex": "buildfile"
+    }
+  ]
+}
