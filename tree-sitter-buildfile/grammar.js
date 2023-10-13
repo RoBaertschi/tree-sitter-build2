@@ -23,12 +23,10 @@ module.exports = grammar({
 
     if_definition: ($) =>
       seq(
-        $.if_keyword,
+        "if",
         field("test_expression", $.test_expression),
         field("block", $.block),
       ),
-
-    if_keyword: (_) => "if",
 
     test_expression: ($) =>
       seq(
@@ -38,7 +36,7 @@ module.exports = grammar({
         ")",
       ),
 
-    _type: ($) =>
+    _type: (_) =>
       choice(
         "bool",
         // TODO: other kinds of types
@@ -47,13 +45,11 @@ module.exports = grammar({
 
     block: ($) => seq("{", repeat($._statement), "}"),
 
-    _statement: ($) =>
-      choice(
-        $.return_statement,
-        // TODO: other kinds of statements
-      ),
+    _statement: ($) => choice(),
+    //    $.return_statement,
+    // TODO: other kinds of statements
 
-    return_statement: ($) => seq("return", $._expression, ";"),
+    // return_statement: ($) => seq("return", $._expression, ";"),
 
     _expression: ($) =>
       choice(

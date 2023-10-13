@@ -7,7 +7,7 @@
 ; keywords
 
 [
-  (if_keyword)
+  "if"
 ] @keyword
 
 (identifier) @variable

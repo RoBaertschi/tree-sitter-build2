@@ -21,8 +21,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "if_keyword"
+          "type": "STRING",
+          "value": "if"
         },
         {
           "type": "FIELD",
@@ -41,10 +41,6 @@
           }
         }
       ]
-    },
-    "if_keyword": {
-      "type": "STRING",
-      "value": "if"
     },
     "test_expression": {
       "type": "SEQ",
@@ -116,29 +112,7 @@
     },
     "_statement": {
       "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "return_statement"
-        }
-      ]
-    },
-    "return_statement": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "return"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_expression"
-        },
-        {
-          "type": "STRING",
-          "value": ";"
-        }
-      ]
+      "members": []
     },
     "_expression": {
       "type": "CHOICE",
