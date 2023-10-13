@@ -15,11 +15,15 @@
   "main": "bindings/node",
   "tree-sitter": [
     {
-      "scope": "source.buildfile",
+      "scope": "source.build2.buildfile",
       "file-types": [
-        "buildfile"
+        "buildfile",
+        "root.build",
+        "export.build",
+        "config.build",
+        "bootstrap.build"
       ],
-      "injection-regex": "buildfile"
+      "injection-regex": "build2.buildfile"
     }
   ]
 }

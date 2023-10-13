@@ -17,7 +17,7 @@ module.exports = grammar({
 
     _definition: ($) =>
       choice(
-        $.if_definition
+        $.if_definition,
         // TODO: other kinds of definitions
       ),
 
@@ -25,22 +25,22 @@ module.exports = grammar({
       seq(
         $.if_keyword,
         field("test_expression", $.test_expression),
-        field("block", $.block)
+        field("block", $.block),
       ),
 
-    if_keyword: ($) => "if",
+    if_keyword: (_) => "if",
 
     test_expression: ($) =>
       seq(
         "(",
         // TODO: test
         $._test,
-        ")"
+        ")",
       ),
 
     _type: ($) =>
       choice(
-        "bool"
+        "bool",
         // TODO: other kinds of types
       ),
     _test: ($) => choice(seq($._expression, "==", $._expression)),
@@ -49,7 +49,7 @@ module.exports = grammar({
 
     _statement: ($) =>
       choice(
-        $.return_statement
+        $.return_statement,
         // TODO: other kinds of statements
       ),
 
@@ -60,25 +60,25 @@ module.exports = grammar({
         $.identifier,
         $.number,
         $.string,
-        $.variable_lookup
+        $.variable_lookup,
         // TODO: other kinds of expressions
       ),
 
-    _string_literal: ($) => /['|"]/,
+    _string_literal: (_) => /['|"]/,
     string: ($) => seq($._string_literal, $._string_content, $._string_literal),
-    _string_content: ($) => /[\w]+/,
+    _string_content: (_) => /[\w]+/,
 
-    identifier: ($) => /[\w]+/,
+    identifier: (_) => /[\w]+/,
 
-    number: ($) => /\d+/,
+    number: (_) => /\d+/,
 
     variable_lookup: ($) => seq($._lookup_token, $.variable),
 
     variable: ($) =>
       seq($.identifier, repeat(seq($.member_access, $.identifier))),
 
-    member_access: ($) => ".",
+    member_access: (_) => ".",
 
-    _lookup_token: ($) => "$",
+    _lookup_token: (_) => "$",
   },
 });
